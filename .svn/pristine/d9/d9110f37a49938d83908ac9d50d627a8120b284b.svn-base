@@ -1,0 +1,23 @@
+Description of five classes and their method(s):
+
+NOTE: Run Driver class, that’s where the main method is :)
+
+1. Bank: a singleton class with two methods: 
+	1). openCheckingAccount(); 
+	2). openSavingAccount(). 
+Users can choose to open these 2 types of account with the bank.
+
+2. Account: a class with five methods: 
+	1). accountSetup(), to allow user setup account with account open date and initial balance; 
+	2). calInterest(), a abstract method that calculate balance, which varies with the account type;
+	3). updateBalance(), update balance up to date;
+	4). printSummary(), prints account No, balance, opening date, and last updated date;
+	5). getAccountSummary(), update account information and print out summary.
+
+3. CheckingAccount: a subclass of Account with empty calInterest() method, as there is no interest for checking account.
+
+4. SavingsAccount: a subclass of Account with calInterest() that calculates interest based on date as well as assumed yearly interest rate of 5%.
+
+5. Driver: the class where the main method is. The purpose of this class is to demonstration the function of this Bank Account program. 
+	1). main(), a method that demonstrate 2 sample accounts (one checking and one savings), and also allows to to open your own account(s);
+	2). openAccount(), a private methods that allows you to open an account today with a balance and a account type of your choice. 
