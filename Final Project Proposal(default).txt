@@ -1,0 +1,19 @@
+Final Project Proposal(default)
+
+
+The basic idea of this project is to implement a Publisher and several Subscribers, that’s publisher-subscriber channel. The data generators would act like a publisher which takes data from .csv files and publish them into queues. and the trading machines would act like subscriber, who gonna take data from queues and update their local informations. In generic design, we gonna use the activeMQ queue to transfer the statistics. And both the publisher and subscriber would use MVC pattern to implement. Most of the functions will be handled in the mediator(controller) part. Reporting system handle the View part, which is responsible of displaying all the messages. Other abstract part like message model would be handled in the model part. 
+
+The original statistics would be fetched by data generator from the .csv files, each file contains a single data of s specific stock. Each stock contains 333 distinct data files. We can just get it, and load the data to the queues. 
+
+In the info transfer part, we gonna use several different queues. And each queue represents a single stock. For a single data record will only be uploaded to its related queue. And so does the trading machine. Each machine has a portfolio of stocks, we gonna use composite pattern to design the Portfolio. Thus, each machine would subscribe the info of multiple queues. And they gonna fetch data from queue periodically. 
+(Here’s a potential problem, if we just use normal queue to store data, a record would be gone if one of the machines fetches it, so another machine cannot get the data completely. To solve this, we gonna use Topics instead.)
+
+Before the message get uploaded to the queue, a message translator would be necessary to get the message(record) in format. Besides of the normal pricing data, general data like average, std deviation, etc. Then the message will be loaded to the queue. 
+
+On the subscriber part, the data records would be fetched to local program periodically. We gonna use splitter to get the record to specific data values. And the data will be updated on the output stream, and we gonna use a iterator to do the output job. All the update data will be printed into console, so the trader could see it. Of course we just want one reporting engine in a trading machine, so we will use singleton to implement the reporting system. 
+
+If time permits, I’ll implement the trading function, which will simulate the trading action at some specific time-point . And this function implementation requires the states like the amount of stocks we have in portfolio to be recorded. Thus, state pattern would be necessary to use. 
+
+Basically, that’s the blueprint of my final project. Of course, that’s not the final edition, and more details would come to implementation of this project. 
+
+If there’s any suggestions, please contact me. It will be great to have some inspiring ideas.  
